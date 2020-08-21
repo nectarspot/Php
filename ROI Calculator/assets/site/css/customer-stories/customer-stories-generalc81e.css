@@ -1,0 +1,383 @@
+/* Override styles only for "Customer Stories" page */
+#wrapper {
+  padding-top: 0;
+}
+
+#header {
+  padding: 14px 0;
+  background-color: transparent;
+  box-shadow: unset;
+}
+
+#header.scrolled {
+  background-color: #ffc107;
+  transition: background-color .7s ease;
+}
+
+#header .nav-bar ul a {
+  font-weight: 500;
+}
+
+#header .nav-bar ul a,
+#header .nav-bar .login-btns:before {
+  color: #222B37;
+}
+
+#header .nav-bar ul a:hover {
+  color: #fff;
+}
+
+#header .nav-bar ul .btn-signup {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  letter-spacing: .3px;
+  background-color: transparent;
+  border: 2px solid #FFF;
+  border-radius: 4px;
+}
+
+#header .nav-bar ul .btn-signup:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: unset;
+}
+
+/* Override styles only for "Customer Stories" page */
+
+main.cs-stories {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.cs-page-title {
+  padding: 87px calc((100% - 1024px) / 2) 65px;
+  color: #FFF;
+  letter-spacing: .3px;
+  background-image: url(../../../images/customer-stories/page-title-bg-min.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.cs-page-title__headline {
+  font-size: 55px;
+  font-weight: 300;
+  line-height: 71px;
+}
+
+.cs-page-title__subheadline {
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 26px;
+}
+
+.stories-previews {
+  max-height: 625px;
+  padding: 56px calc((100% - 1024px) / 2) 110px;
+}
+
+.stories-previews__headline {
+  width: 100%;
+  max-width: 656px;
+  margin: 0 auto;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #657480;
+  letter-spacing: 0.3px;
+}
+
+.stories-previews__wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1000px;
+  margin: 80px auto 0;
+}
+
+.cs-quote {
+  padding: 63px 0 54px 0;
+  background-color: #ffc107;
+}
+
+.cs-quote__text {
+  position: relative;
+  width: 100%;
+  max-width: 501px;
+  margin: 0 auto;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 26px;
+  color: #46535D;
+  text-align: center;
+  z-index: 1;
+}
+
+.cs-quote__text:before {
+  position: absolute;
+  top: -11px;
+  left: -2px;
+  width: 41px;
+  height: 27px;
+  content: "";
+  background-image: url(../../../images/customer-stories/light-quotes.svg);
+  z-index: -1;
+}
+
+.cs-quote__text:after {
+  position: absolute;
+  right: 4px;
+  bottom: -11px;
+  width: 41px;
+  height: 27px;
+  content: "";
+  background-image: url(../../../images/customer-stories/light-quotes.svg);
+  transform: rotateY(180deg);
+  z-index: -1;
+}
+
+.cs-quote__text span {
+  font-weight: 700;
+}
+
+.cs-quote__credentials {
+  width: 100%;
+  max-width: 309px;
+  margin: 43px auto 0;
+}
+
+.cs-quote__credentials figure {
+  display: flex;
+  align-content: center;
+  margin: 0;
+}
+
+.cs-quote__credentials img {
+  border-radius: 50%;
+}
+
+.cs-quote__credentials figcaption {
+  align-self: center;
+  margin-left: 20px;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  color: #303E4D;
+  text-align: left;
+  letter-spacing: .084px;
+}
+
+.cs-quote__credentials figcaption div:nth-child(2) {
+  font-weight: 300;
+  font-style: italic;
+}
+
+.cs-try-free {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 320px;
+  padding: 93px 0 95px;
+}
+
+.cs-try-free__headline {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 47px;
+  color: #484F59;
+}
+
+.cs-try-free__link {
+  display: block;
+  width: 100%;
+  max-width: 233px;
+  height: 60px;
+  padding: 20px 23px;
+  margin: 25px auto 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  color: #FFFFFF;
+  text-align: center;
+  text-transform: capitalize;
+  letter-spacing: .07px;
+  background: #FFC107;
+  border-radius: 5px;
+}
+
+.cs-try-free__link:hover {
+  text-decoration: none;
+  background: #ECB100;
+}
+
+@media screen and (max-width: 1023px) {
+  .cs-page-title {
+    padding-top: 65px;
+  }
+
+  .cs-page-title__headline {
+    font-size: 40px;
+    line-height: 52px;
+  }
+
+  .cs-page-title__subheadline {
+    font-size: 18px;
+    line-height: 23px;
+  }
+
+  .stories-previews {
+    max-height: 544px;
+    padding: 40px calc((100% - 800px) / 2) 110px;
+  }
+
+  .stories-previews__wrapper {
+    max-width: 800px;
+    margin-top: 60px;
+  }
+
+  .cs-quote__text {
+    max-width: 423px;
+    font-size: 16px;
+    line-height: 21px;
+  }
+
+  span.wbr {
+    display: block;
+  }
+
+  .cs-quote__text:before {
+    top: -13px;
+    left: -42px;
+  }
+
+  .cs-quote__text:after {
+    right: -40px;
+    bottom: -13px;
+  }
+
+  .cs-quote__credentials figcaption {
+    font-size: 16px;
+    line-height: 19px;
+  }
+
+  .cs-try-free__headline {
+    font-size: 36px;
+    line-height: 42px;
+  }
+
+  .cs-try-free {
+    max-height: 264px;
+    padding: 65px 0 67px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  #header .nav-bar ul a:hover {
+    color: #ffc107;
+  }
+
+  #header .nav-bar ul .btn-signup {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    letter-spacing: unset;
+    background-color: #ffc107;
+    border: none;
+    border-radius: unset;
+  }
+
+  #header .nav-bar ul .btn-signup:hover {
+    background: #f6c544;
+    border-color: #f6c544;
+  }
+
+  .stories-previews {
+    max-height: unset;
+  }
+
+  .stories-previews__wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
+
+@media screen and (max-width: 425px) {
+  .cs-page-title {
+    padding-top: 85px;
+    padding-bottom: 53px;
+  }
+
+  span.wbr-mobile {
+    display: block;
+  }
+
+  .stories-previews {
+    padding: 35px 20px 82px;
+  }
+
+  .stories-previews__headline {
+    font-size: 18px;
+    line-height: 23px;
+  }
+
+  .stories-previews__wrapper {
+    max-width: unset;
+    margin-top: 0;
+  }
+
+  .cs-quote {
+    padding: 39px 0 24px 0;
+  }
+
+  .cs-quote__text {
+    padding: 0 21px 0;
+    font-size: 18px;
+    line-height: 23px;
+  }
+
+  .cs-quote__text .wbr {
+    display: inline;
+  }
+
+  .cs-quote__text .wbr-forced {
+    display: block;
+  }
+
+  .cs-quote__text:before {
+    top: -10px;
+    left: 15px;
+  }
+
+  .cs-quote__text:after {
+    right: 29px;
+    bottom: -14px;
+  }
+
+  .cs-quote__credentials {
+    margin: 20px auto 0;
+  }
+
+  .cs-try-free {
+    max-height: 354px;
+    padding: 88px 0 94px;
+  }
+
+  .cs-try-free__headline {
+    font-size: 35px;
+    line-height: 41px;
+  }
+
+  .cs-try-free__link {
+    margin-top: 30px;
+  }
+
+}
