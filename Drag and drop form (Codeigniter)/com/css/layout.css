@@ -1,0 +1,322 @@
+		body, html, .container-fluid {
+		  height: 100%;
+		}
+
+		a:link {color:#4b4b4b;text-decoration: none}      /* unvisited link */
+		a:visited {color:#4b4b4b;text-decoration: none}  /* visited link */
+		a:hover {color:black;text-decoration: none}  /* mouse over link */
+		a:active {color:#4b4b4b;text-decoration: none}  /* selected link */
+
+		h1,h2,h3,h4,h5,h6{
+			color:#4b4b4b;
+		}
+
+		.main-container {
+		  height:100%;
+		  width: 100%;
+		 /* border: 1px red solid;*/
+		}
+
+		#header{
+			width:100%;
+			height: 30px;
+			background-color: #1ba1e2;
+			/* border:1px brown solid;*/
+		}
+
+		#header #data{
+			vertical-align:middle;
+			font-size: 20px;
+			color:white;
+			margin-left: 10px
+		}
+		#header #data #logo{
+			font-size: 22px;
+		}
+
+		#header #data a{
+			color:white;
+		}
+
+		#header #data #menu{
+			margin-right: 10px;
+		}
+
+		#left-container{
+			width:35%;
+			height:90%;
+			float:left;
+			border-right:1px #2e92cf solid;
+			border-bottom:1px #2e92cf solid;
+			color:black;
+		}
+		#left-container #data{
+			margin-left: 10px!important;
+			margin-right:10px!important;
+			
+		}
+
+		#left-container h4{
+			color:#ff6707;
+		}
+
+		#right-container{
+			width:65%;
+			height:90%;
+			float:left;
+			border-bottom:1px #2e92cf solid;
+			overflow-x:scroll;
+		}
+
+		#right-container #data{
+			margin-left: 10px;
+			margin-right:10px;
+			
+		}
+
+
+
+		#footer{
+			width:100%;
+			height: 5%;
+			/*border:1px brown solid;*/
+
+		}
+		#footer #data{
+			vertical-align:middle;
+			font-size: 20px;
+						
+		}
+		#footer #data #options{
+			float:left;
+			margin-left: 10px;
+		}
+		#footer #data #options i{
+			color:#286f9a;
+			margin-top: 5px;
+		}
+
+		#footer #data #console{
+			float:left;
+			margin-right: 10px;
+			color:#2e92cf;
+			float:right;
+		}
+		#footer #data #console i{
+			color:#ac3900;
+		}
+		#footer #data #console #console-text{
+			margin-left: 5px;
+			color:black;
+		}
+
+		.thetrueblueboy{
+			color:#286f9a;
+		}
+
+		.blueboy{
+			color:#286f9a;
+			font-size: 16px;
+		}
+
+		.oboy{
+			color:#ff6707;
+		}
+
+		.blackboy{
+			color:black;
+		}
+
+		.small-input{
+			width:200px;
+			float:left;
+			margin-left: 5px;
+		}
+		.small-input-label{
+			float:left;
+			font-size: 30px;
+			margin-left: 5px;
+		}
+
+		.ind{
+			margin-left: 10px;
+			margin-top: 25px;
+		}
+
+
+		.error{
+			border-color: #ff6707;
+			-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+			box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+		}
+
+		.custom-row{
+			margin-left: 5px;
+			margin-right:5px;
+		}
+		.custom-row{
+			border:#1990d5 1px solid;
+			margin-top:5px;
+			padding: 4px 2px 2px 2px;
+		}
+
+		.tinyarea{
+			border:#1ba1e2 1px solid;
+		}
+
+        .ui-drop-hover{
+            background-color: #dedede !important;
+        }
+
+        .cbox-preview{
+        	border:#1990d5 1px solid;
+        }
+
+        .SubCmdMenu_layout, .SubCmdMenu_project{
+			display: none;
+		}
+
+
+		.tabbtn{
+			margin-top:-10px;
+		}
+
+
+		#thecarousel .carousel-caption{
+			    top: 0;
+    			bottom: auto;
+		}
+
+
+		#thecarousel h3{
+			color:white;
+		}
+
+		.addslidebtn{
+			height: 10px;
+			font-size: 5px;
+		}
+
+		.thumbImg{
+			height: 100px!important;
+			width: 100px!important;
+		}
+
+		.handCursor{
+			cursor: pointer; 
+		}
+
+		.com_slider h3{
+			color:white;
+		}
+
+		.com_slider{
+			margin-bottom: 20px!important;
+		}
+
+		.com_footer{
+			margin-top: 10px!important;
+		}
+
+
+		.btn-upload{
+			color:#fff!important;
+		}
+
+		#dlmessages{
+			visibility: none;
+			text-align: center;
+		}
+
+		.dldisabled{
+			color:grey;
+		}
+
+
+		.text-green{
+			color:green;
+		}
+		.text-red{
+			color:red;;
+		}
+		.text-blue{
+			color:#2fa4e7;
+		}
+
+		/* 
+		 *
+		 * Modal PopUp Code 
+		 *
+		 */
+
+
+
+		#basic-modal-content {
+			display:none;
+		}
+
+		/* Overlay */
+		#simplemodal-overlay {
+			background-color:#000;
+		}
+
+		/* Container */
+		#simplemodal-container {
+			height:500px;
+			width:600px;
+			color:#4b4b4b;
+			background-color:white;
+			border:4px solid #286f9a;
+			padding:12px;
+			overflow-y: auto;
+			overflow-x:hidden;
+
+		}
+		#simplemodal-container .simplemodal-data {
+			padding:8px;
+		}
+		#simplemodal-container code {
+			background:#141414;
+			border-left:3px solid #65B43D;
+			color:#bbb;
+			display:block;
+			font-size:12px;
+			margin-bottom:12px;
+			padding:4px 6px 6px;
+		}
+		/*
+		#simplemodal-container a {
+			color:#ddd;
+		}
+		*/
+		#simplemodal-container a.modalCloseImg {
+			background:url(../img/x.png) no-repeat;
+			 width:25px;
+			 height:29px;
+			 display:inline;
+			 z-index:3200;
+			 position:absolute;
+			 top:0px;
+			 right:0px;
+			 cursor:pointer;
+		}
+		
+		#simplemodal-container h3 {
+			color:#84b8d9;
+			margin:0px 0px 0px 0px;
+			display: inline;
+		}
+
+		#simplemodal-container h3 {
+			color:#84b8d9;
+			margin:0px 0px 0px 0px;
+			display: inline;
+		}
+
+
+
+		/* 
+		 *
+		 *   End of Modal PopUp Code
+		 *
+		 */
