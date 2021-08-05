@@ -1,0 +1,262 @@
+.blue-font {
+    color: var(--main-dark-blue-color) !important;
+}
+.c-table-column {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 20%;
+    -ms-flex: 0 20%;
+    flex: 0 20%;
+}
+.c-table-column.iimnet-column {
+    position: relative;
+    z-index: 10;
+    border-radius: 0;
+    background-color: var(--main-dark-blue-color);
+    box-shadow: 0 14px 45px 0 rgba(51, 53, 82, 0.25), 0 10px 18px 0 rgba(51, 53, 82, 0.22);
+    color: var(--main-dark-blue-color);
+}
+.table-row-value {
+    color: #33475b;
+    font-size: 15px;
+    line-height: 1.5rem;
+    text-align: center;
+    /*letter-spacing: 0.5px;*/
+}
+.table-row-value.color-text-white {
+    color: #fff;
+}
+.table-row-value.color-text-white.bigger {
+    font-size: 15px;
+    font-weight: 400;
+    text-align: center;
+}
+.fw-600 {
+     font-weight: 600 !important;
+     font-size: 16px !important
+}
+.table-headline {
+    color: #33475b;
+    font-size: 16px;
+    line-height: 1.5rem;
+    font-weight: 600;
+}
+.c-table-rowcell {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 72px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+        border: 1px solid #1b48b2;
+}
+.c-table-rowcell.ceentr-grey {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    background-color: #3feb9830;
+}
+.c-table-rowcell.align-left {
+    padding-left: 16px;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+.table-row-lable {
+    color: #33475b;
+    font-size: 16px;
+    line-height: 1.5rem;
+    font-weight: 600;
+}
+/*.sub-heading {
+    margin-bottom: 56px;
+    text-align: center;
+}*/
+		.c-table-table {
+    display: -ms-grid;
+    display: grid;
+    /*width: 1144px;*/
+    margin-right: auto;
+    margin-left: auto;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+}
+.compare-table-mobile {
+    display: none;
+}
+.compare-card {
+    padding: 24px;
+    border-radius: 16px;
+    background-color: #3feb9830;
+}
+.mobile-headline {
+    color: #33475b;
+    font-size: 16px;
+    text-align: center;
+}
+.row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+.row.prom {
+    border-radius: 8px;
+    background-color: var(--main-dark-blue-color);
+}
+.c-table-rowcell-copy {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 72px;
+   /* -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;*/
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-left: 16px;
+    -webkit-box-pack: start;
+    -webkit-justify-content: flex-start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+.c-table-rowcell-copy.ceentr-grey {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+}
+
+@media screen and (max-width: 991px) {
+.c-table-table {
+    display: -ms-grid;
+    display: grid;
+    width: auto;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    -ms-grid-columns: 1fr 1fr 1.5fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1.5fr 1fr 1fr;
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+}
+.c-table-rowcell {
+    padding-right: 8px;
+    padding-left: 8px;
+}
+.table-row-lable {
+    font-size: 1rem;
+    line-height: 1.3rem;
+}
+}
+@media screen and (max-width: 767px) {
+    .table-row-value {
+        text-align: left;
+    }
+    .compare-card {
+        border: 1px solid #1b48b2;
+    }
+.c-table-table {
+    display: none;
+}
+.compare-table-mobile .carousel-control-next, .compare-table-mobile .carousel-control-prev {
+    opacity: 1
+}
+.compare-table-mobile .carousel-control-next-icon {
+   top: 1em;
+    position: absolute;
+    background-image: none !important;
+    color: #1b48b2;
+    width: 30px;
+    height: 30px;
+}
+.compare-table-mobile .carousel-control-prev-icon {
+	top: 1em;
+    position: absolute;
+    background-image: none !important;
+    color: #1b48b2;
+     width: 30px;
+    height: 30px;
+}
+.compare-table-mobile .carousel-control-next-icon i, .compare-table-mobile .carousel-control-prev-icon i {
+    font-size: 25px
+}
+.mobile-headline {
+    /*padding-top: 16px;*/
+    padding-bottom: 16px;
+    font-weight: 700;
+}
+.compare-table-mobile {
+    display: block;
+    max-width: 100%;
+    grid-auto-columns: 1fr;
+    -ms-grid-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    -ms-grid-rows: auto auto;
+    grid-template-rows: auto auto;
+}
+.compare-card {
+    display: -ms-grid;
+    display: grid;
+    padding: 16px 24px 0;
+    grid-auto-columns: 1fr;
+    grid-column-gap: 8px;
+    grid-row-gap: 0px;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    -ms-grid-rows: auto auto auto auto auto;
+    grid-template-rows: auto auto auto auto auto;
+    border-radius: 0;
+    background-color: #fff;
+    box-shadow: 0 1px 16px 0 rgb(0 0 0 / 10%);
+}
+.row.prom {
+    border-radius: 0;
+    background-color: #3feb9830;
+}
+/*.c-table-rowcell-copy.ceentr-grey.no-border, .c-table-rowcell-copy.no-border {
+    border-bottom-style: none;
+}*/
+.c-table-rowcell-copy {
+    height: 64px;
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    border: 1px solid #1b48b2;
+    text-align: center;
+    padding-left: 10px;
+    box-shadow: 10px 0 5px -2px rgb(0 0 0 / 6%);
+    -webkit-box-shadow: 10px 0 5px -2px rgb(0 0 0 / 6%);
+}
+.image-321 {
+    height: 24px;
+}
+
+}
+@media screen and (max-width: 479px) {
+.compare-card {
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
+}

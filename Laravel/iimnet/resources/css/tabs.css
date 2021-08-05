@@ -1,0 +1,149 @@
+.tabs-functionality .ser-tab {
+    display: block !important;
+}
+.tabs-functionality .ser-tab li a, .tabs-functionality .ser-tab li a:hover, .tabs-functionality .ser-tab li a.active {
+  border-bottom: none !important;
+}
+.tabs-functionality .ser-tab li a {
+  height: auto;
+  border: 1px solid #ccc !important;
+  padding: 12px 20px; 
+  display: block;
+  margin-top: 0
+}
+.tabs-functionality .ser-tab li a:hover {
+  border: 1px solid !important; 
+  border-color: rgba(0,0,0,0.3) !important;
+  }
+  .tabs-functionality .ser-tab li a.active {
+  border: 1px solid var(--main-dark-blue-color) !important;
+}
+.tabs-functionality .ser-tab li a::before {
+  display: none !important
+}
+.tabs-functionality .ser-tab li a .span-text {
+  margin: 0;
+  text-align: left;
+    padding-left: 40px;
+    display: block;
+    font-weight: 500;
+    color: #222;
+}
+.option-checkmark {
+    border: 1px solid rgba(0,0,0,0.6);
+    border-radius: 100px;
+    height: 24px;
+    left: 20px;
+    position: absolute;
+    transition: 0.1s ease;
+    width: 24px;
+}
+.option-checkmark::after {
+    background-color: #fff;
+    border-radius: 60px;
+    content: "";
+    display: block;
+    height: 12px;
+    left: 5px;
+    position: absolute;
+    top: 5px;
+    width: 12px;
+}
+ .tabs-functionality .ser-tab li a.active  .option-checkmark {
+    background-color: var(--main-dark-blue-color) !important;
+    border-color: var(--main-dark-blue-color) !important;
+}
+
+
+.tabs-functionality .ser-tab li a:hover .option-checkmark {
+    background-color: rgba(27, 72, 178,0.5);
+    border-color: rgba(27, 72, 178,0.5);
+
+}
+
+      .cs-inner-box img {
+        border-bottom: 5px solid var(--main-dark-blue-color);
+    }
+    .grid-item {
+        height: 500px;
+    }
+    .filters {
+    width: 100%;
+    text-align: center;
+}
+
+.filters ul {
+    list-style: none;
+    padding: 20px 0;
+}
+
+.filters li.active:before, .filters li:hover:before {
+    opacity: 1;
+}
+.filters li.active, .filters li:hover {
+    background-color: var(--main-dark-blue-color) !important;
+    border-bottom: 5px solid var(--main-green-color);
+}
+.filters li {
+    position: relative;
+}
+.filters li::before {
+    content: "";
+    position: absolute;
+    left: calc(50% - 10px);
+    top: 100%;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid var(--main-green-color);
+    transition: transform .2s ease;
+    will-change: transform;
+    opacity: 0;
+}
+    .mb-40 {
+        margin-bottom: 40px;
+    }
+    .read-btn {
+        display: block;
+        padding: 20px;
+        border-top: 1px solid #fcf7f7;
+    }
+    .cs-inner-box {
+        -webkit-box-shadow: 0px 10px 20px 0px rgba(0,0,0,.1);
+    -moz-box-shadow: 0px 10px 20px 0px rgba(0,0,0,.1);
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,.1);
+    border-radius: 6px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    }
+    .cs-inner-box-text {
+        padding: 20px 20px 0;
+        display: flex;
+    flex-direction: column;
+    height: 100%;
+    }
+    .cs-inner-box-text p {
+        font-size: 16px !important;
+    }
+    .cs-client-name {
+        font-size: 20px;
+    font-weight: 600;
+    color: var(--main-dark-blue-color);
+    }
+
+@media (max-width: 767px) {
+  .tabs-functionality .ser-tab {
+    display: block
+  }
+  .tabs-functionality .ser-tab li a {
+    padding: 15px 20px;}
+    .grid-item {
+    height: auto !important;}
+    .mob-w-100 {
+    width: 100% !important;
+    text-align: center;
+}
+}
