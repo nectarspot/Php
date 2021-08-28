@@ -1,0 +1,1080 @@
+
+<?php
+session_start();
+ if (!(isset($_SESSION['username']))) {
+             header('location:index');
+             
+        }
+
+
+?>
+
+<?php include 'header.php' ?>
+
+<title>Theindianharvest</title>
+<!--<link rel="shortcut icon" href="https://nectarspot.com/images/favicon.png">-->
+<!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>-->
+
+    <style>
+    .hide{
+
+visibility: hidden
+
+}
+.btn-primary{
+    width: 85px;
+padding: 8px 1px;
+}
+
+.drop-list{
+  display: flex;
+}
+.drop-list .dropdown{
+  padding:10px;
+}
+
+/*.dropbtn {*/
+/*  background-color: #4CAF50;*/
+/*  color: white;*/
+/*  width: 85px; */
+/*  padding: 11px 1px;*/
+/*  font-size: 11px;*/
+/*  border: none;*/
+/*}*/
+
+/*.dropdown {*/
+/*  position: relative;*/
+/*  display: inline-block;*/
+/*}*/
+
+/*.dropdown-content {*/
+/*  display: none;*/
+/*  position: absolute;*/
+/*  background-color: #f1f1f1;*/
+/*  min-width: 160px;*/
+/*  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);*/
+/*  z-index: 1;*/
+/*}*/
+
+/*.dropdown-content a {*/
+/*  color: black;*/
+/*  padding: 12px 16px;*/
+/*  text-decoration: none;*/
+/*  display: block;*/
+/*}*/
+
+/*.dropdown-content input:hover {background-color: red;}*/
+
+/*.dropdown:hover .dropdown-content {display: block;}*/
+
+/*.dropdown:hover .dropbtn {background-color: #3e8e41;}*/
+.approved{
+    width: 173px;
+    padding: 16px 1px;
+    font-size: 8px;
+}
+
+.table-striped tbody tr td {
+    font-size: 14px;
+    color: #212529;
+}
+
+.left-sidebar {
+position: absolute;
+width: 210px;
+height: 100%;
+top: 0;
+z-index: 10;
+padding-top: 64px;
+background: #fff;
+}
+#main-wrapper[data-layout=vertical][data-sidebartype=full] .page-wrapper {
+margin-left: 210px;
+}
+.table-responsive thead th {
+color: #1b48b2 !important;
+font-weight: 600 !important;
+font-size: 14px !important;
+}
+
+
+/*.dt-buttons{margin:-34px 80px !important}*/
+/*.bb{*/
+/*    margin: 8px 18px;*/
+/*background-color: #1848b2;*/
+/*color: #fff;*/
+/*border: none;*/
+/*padding: 3px 6px;*/
+/*}*/
+/*#checkAl{margin-left:-8px;margin-right:7px}*/
+/*@media screen and (max-width:320px){ .bb {*/
+/*margin: 8px 5px;*/
+/*}}*/
+/*@media screen and (max-width:767px){ */
+/*    .bb {*/
+/*margin: 8px 32px;*/
+/*}*/
+/*    .dt-buttons {*/
+/*margin: -35px -60px 0 0!important;*/
+/*}*/
+/*}*/
+
+.btn-default {
+    background-color: #a9adb2 !important;
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 7rem;
+    padding: .5rem 0;
+    margin: 0.125rem -60px 4px;
+    font-size: .875rem;
+    color: #6a7a8c;
+    text-align: left;
+    background-color: #7e8380;
+    border: 1px solid #e9ecef;
+    border-radius: 2px;
+    opacity:1px;
+}
+
+</style>
+
+
+<body>
+
+     
+
+<?php
+    if(isset($_POST['approved']))
+    {
+        $msg = "Approved";
+        $status=$_POST['approved'];
+    }
+    
+    if(isset($_POST['rejected']))
+    {
+        $msg = "Rejected";
+        $status=$_POST['rejected'];
+    }
+    $id=$_POST['id'];
+    $conn = mysqli_connect('localhost', 'marketf7_lokesh', '#Xka1ZJ$&QC[' );
+    mysqli_select_db($conn, 'marketf7_mailspot');
+
+    $sql = "UPDATE indianharvest_reservation SET status = '$status' WHERE id = '$id'";
+
+    if(mysqli_query($conn, $sql))
+        header("refresh:1; url=indianharvest_view");
+    else
+        var_dump(mysqli_error($conn));
+    ?>
+    
+    
+    
+    <!-- ============================================================== -->
+    <!-- Preloader - style you can find in spinners.css -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div class="lds-pos"></div>
+            <div class="lds-pos"></div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper" data-navbarbg="skin6" data-theme="light" data-layout="vertical" data-sidebartype="full"
+        data-boxed-layout="full">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-md navbar-light">
+                <div class="navbar-header" data-logobg="skin5">
+                    <!-- This is for the sidebar toggle which is visible on mobile only -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+                        <i class="ti-menu ti-close"></i>
+                    </a>
+                    <!-- ============================================================== -->
+                    <!-- Logo -->
+                    <!-- ============================================================== -->
+                    <div class="navbar-brand" style="background-color: #ffffff;">
+                        <a href="index.php" class="logo">
+                            <!-- Logo icon -->
+                            <b class="logo-icon">
+                                <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
+                                <!-- Dark Logo icon -->
+                                <!--<img src="https://nectarspot.com/images/new-ns-clear-logo.png" alt="homepage" class="dark-logo" style="height: 40px; width: 200px; " />-->
+                                <!-- Light Logo icon -->
+                                <img src="https://theindianharvest.com/images/logo1.png" alt="homepage" class="light-logo" style="height: 62px; width: 192px;"/>
+                            </b>
+                            <!--End Logo icon -->
+                            <!-- Logo text -->
+                           
+                        </a>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Logo -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Toggle which is visible on mobile only -->
+                    <!-- ============================================================== -->
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+                        data-toggle="collapse" data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="ti-more"></i>
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+                <div class="navbar-collapse collapse" id="navbarSupportedContent" data-navbarbg="skin6">
+                    <!-- ============================================================== -->
+                    <!-- toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav float-left mr-auto">
+                        <!-- ============================================================== -->
+                        <!-- Search -->
+                        <!-- ============================================================== -->
+                       
+                    </ul>
+                    <!-- ============================================================== -->
+                    <!-- Right side toggle and nav items -->
+                    <!-- ============================================================== -->
+                    <ul class="navbar-nav float-right">
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                             <button class="button btn-primary" style="margin-left:782px;"> <a href="logout.php" style="color:#ffffff;"> Logout</a></button>
+                           
+                        </li>
+                        <!-- ============================================================== -->
+                        <!-- User profile and search -->
+                        <!-- ============================================================== -->
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" data-sidebarbg="skin5">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        
+                        <li class="sidebar-item">
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="https://marketenomicsdigital.com/NS-Forms/indianharvest_view"
+                                aria-expanded="false">
+                                <i class="mdi mdi-border-none"></i>
+                                <span class="hide-menu">Reservation Details</span>
+                            </a>
+                        </li>
+                        
+                        <!--<li class="sidebar-item">-->
+                        <!--    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="https://marketenomicsdigital.com/NS-Forms/phase_view"-->
+                        <!--        aria-expanded="false">-->
+                        <!--        <i class="mdi mdi-border-none"></i>-->
+                        <!--        <span class="hide-menu">Careers - Frontend Developer</span>-->
+                        <!--    </a>-->
+                        <!--    </li>-->
+                            
+                        <!--     <li class="sidebar-item">-->
+                        <!--    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="https://marketenomicsdigital.com/NS-Forms/leave_details"-->
+                        <!--        aria-expanded="false">-->
+                        <!--        <i class="mdi mdi-border-none"></i>-->
+                        <!--        <span class="hide-menu">Employee Leave Details</span>-->
+                        <!--    </a>-->
+                        <!--</li>-->
+                        
+                        <!-- <li class="sidebar-item">-->
+                        <!--    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="https://marketenomicsdigital.com/NS-Forms/employee_login&logout_details"-->
+                        <!--        aria-expanded="false">-->
+                        <!--        <i class="mdi mdi-border-none"></i>-->
+                        <!--        <span class="hide-menu">Employee Login&Logout Details</span>-->
+                        <!--    </a>-->
+                        <!--</li>-->
+                        <!--  <li class="sidebar-item">-->
+                        <!--    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="https://marketenomicsdigital.com/NS-Forms/website-design-questionnaire_view"-->
+                        <!--        aria-expanded="false">-->
+                        <!--        <i class="mdi mdi-border-none"></i>-->
+                        <!--        <span class="hide-menu">Website Design Questionnaire Details</span>-->
+                        <!--    </a>-->
+                        <!--</li>-->
+                        
+                        <!-- <li class="sidebar-item">-->
+                        <!--    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="https://marketenomicsdigital.com/NS-Forms/nps_view"-->
+                        <!--        aria-expanded="false">-->
+                        <!--        <i class="mdi mdi-border-none"></i>-->
+                        <!--        <span class="hide-menu">NPS Details</span>-->
+                        <!--    </a>-->
+                        <!--</li>-->
+                        <!-- <li class="sidebar-item">-->
+                        <!--    <a class="sidebar-link waves-effect waves-dark sidebar-link" href="https://marketenomicsdigital.com/NS-Forms/careers_apply_view"-->
+                        <!--        aria-expanded="false">-->
+                        <!--        <i class="mdi mdi-border-none"></i>-->
+                        <!--        <span class="hide-menu">Careers Apply Details</span>-->
+                        <!--    </a>-->
+                        <!--</li>-->
+                        
+  <!--                      <li class="sidebar-item nav-item dropdown">-->
+  <!--                          <a class="nav-link dropdown-toggle sidebar-link waves-effect waves-dark sidebar-link" href="#" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-border-none"></i> Careers  -->
+                                 
+  <!--                          </a>-->
+  <!--                          <ul class="dropdown-menu submenu-drpdwn">-->
+  <!--                               <li><a class="dropdown-item" href="https://marketenomicsdigital.com/NS-Forms/careers_apply_view"> Apply </a></li>-->
+  <!--    <li><a class="dropdown-item" href="https://marketenomicsdigital.com/NS-Forms/phase_view"> Frontend Developer </a></li>-->
+  <!--</ul>-->
+  <!--                          </li>-->
+  <!--                          <li class="sidebar-item nav-item dropdown">-->
+  <!--                          <a class="nav-link dropdown-toggle sidebar-link waves-effect waves-dark sidebar-link" href="#" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-border-none"></i> Human Resources  -->
+                                 
+  <!--                          </a>-->
+  <!--                          <ul class="dropdown-menu submenu-drpdwn">-->
+  <!--                               <li><a class="dropdown-item" href="https://marketenomicsdigital.com/NS-Forms/leave_details"> Employee Leave Details </a></li>-->
+  <!--    <li><a class="dropdown-item" href="https://marketenomicsdigital.com/NS-Forms/employee_login&logout_details"> Login/Logout Details </a></li>-->
+  <!--</ul>-->
+  <!--                          </li>-->
+  <!--                          <li class="sidebar-item nav-item dropdown">-->
+  <!--                          <a class="nav-link dropdown-toggle sidebar-link waves-effect waves-dark sidebar-link" href="#" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-border-none"></i> Questionnaire  -->
+                                 
+  <!--                          </a>-->
+  <!--                          <ul class="dropdown-menu submenu-drpdwn">-->
+  <!--                               <li><a class="dropdown-item" href="https://marketenomicsdigital.com/NS-Forms/website-design-questionnaire_view">Website Design Details </a></li>-->
+  <!--    <li><a class="dropdown-item" href="https://marketenomicsdigital.com/NS-Forms/nps_view">NPS Details </a></li>-->
+  <!--</ul>-->
+  <!--                          </li>-->
+                    
+  <!--                  </ul>-->
+                </nav>
+                <!-- End Sidebar navigation -->
+            </div>
+            <!-- End Sidebar scroll-->
+        </aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 align-self-center">
+                        <h4 class="page-title">Book Table Details</h4>
+                         <!--<span class="blue-font">( Click on download button to the download file )</span>-->
+                        
+                     
+
+                    </div>
+                  
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row">
+                    <div class="col-12">
+                    <div class="card">
+                          
+                           
+        <div class="table-wrapper table-responsive">
+             <form method="post" name="frm">
+           <table id="example" class="table-striped"> 
+             <thead>
+                 
+<!--<input type='submit' class="bb" value='Delete' name='but_delete'>-->
+    <th ><input type="checkbox" class="select-all" /> <div class = "btn-group">
+   <button type = "button" class = "btn btn-default" style="margin:-21px 34px 2px 15px;">Action</button>
+   
+   <button type = "button" class = "btn btn-default dropdown-toggle" data-toggle = "dropdown" style="margin:-21px 12px 2px -47px;">
+      <span class = "caret"></span>
+      <span class = "sr-only">Toggle Dropdown</span>
+   </button>
+    
+   <ul class = "dropdown-menu" role = "menu">
+      <li onClick="edit_records();"><span style="color:#ffffff;">Edit</span></li>
+      <li onClick="delete_records();"><span style="color:#ffffff;">Delete</span></li>
+     
+      
+     
+   </ul>
+   
+</div></th>
+<!--            <th> <div class="dropdown">-->
+<!--  <button class="">select</button>-->
+<!--  <div class="dropdown-content">-->
+<!--   <input type="checkbox" id="checkAl" value="Select All"/>Select All-->
+<!--   <input type='submit' class="bb" value='Delete' name='but_delete'>-->
+<!--  </div>-->
+<!--</div></th>-->
+
+               <th>Date(MM/DD/YY)</th>
+              <th>Time</th>
+              <th>Persons</th>
+              <th>Name</th>
+               <th> Email</th>
+                <th>Phone</th>
+                <th>Message</th>
+                <th>Status</th>
+                <!--<th>Edit</th>-->
+                <th>Confirm/Reject</th>
+                
+              </thead>
+
+              <tbody>
+            
+
+
+           
+
+                  <?php
+                       
+            $conn = mysqli_connect('localhost', 'marketf7_lokesh', '#Xka1ZJ$&QC[', 'marketf7_mailspot');
+
+            $sql = "SELECT * FROM indianharvest_reservation order by id desc";
+            $result = mysqli_query($conn, $sql);
+
+            $files = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+
+                  
+                  $i=1;
+      foreach ($files as $file): ?>
+    <tr>
+     <td><input type="checkbox" name="chk[]" class="chk-box" value="<?php echo $file['id']; ?>" ></td>
+     
+     
+     
+      <td><?php echo $file['date']; ?></td>
+      <td><?php echo $file['time']; ?></td>
+      <td><?php echo $file['persons']; ?></td>
+      <td><?php echo $file['customer_name']; ?> </td>
+       <td><?php echo $file['email']; ?></td>
+        <td><?php echo $file['phone_number']; ?></td>
+      <td><?php echo $file['message']; ?></td>
+      <td><?php echo $file['status']; ?></td>
+     
+     
+  <!--    <td>-->
+  <!--<div class="btn-group"><a class="btn btn-primary btn_toggle" data-toggle="modal" href="#Modal_View_<?php echo $file['id']; ?>" ><i class="fa fa-edit" aria-hidden="true"></i></a>-->
+  <!--</div></td>-->
+      
+   </form>
+<td>
+   
+                            <form method="post" action="" id="form">
+                                <input type="hidden" name="id" value="<?php echo $file['id']; ?>" />
+                                 <input type="hidden" name="email" value="<?php echo $file['email']; ?>" />
+                                  <input type="hidden" name="status" value="<?php echo $file['status']; ?>" />
+                                   <input type="hidden" name="name" value="<?php echo $file['customer_name']; ?>" />
+                                   <input type="hidden" name="date" value="<?php echo $file['date']; ?>" />
+                                   <input type="hidden" name="time" value="<?php echo $file['time']; ?>" />
+                                  
+                                <input type="submit" id="one" class="btn btn-primary" value="Confirm" name="approved" style="width: 61px; padding: 7px 0px;"  />
+                               
+                               <input type="submit" id="two" class="btn btn-danger" value="Reject" name="rejected" style="width:62px;" />
+                               
+                               
+                            </form>
+                        </td>
+    </tr>
+  
+
+   
+
+           <?php endforeach;?>
+                  
+</tbody>
+
+                   
+              </table>
+
+                           
+                   
+
+
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                </div>
+               
+                
+            </div>
+           
+        </div>
+       
+    </div>
+    
+    
+    <?php
+ if (isset($_POST['update'])){
+
+// $servername = "localhost";
+// $username = "marketf7_lokesh";
+// $password = "#Xka1ZJ$&QC[";
+// $dbname = "marketf7_mailspot";
+
+$id=$_POST['id'];
+
+    $orgDate =  $_POST['date'];  
+    $date = date("m/d/Y", strtotime($orgDate));  
+   
+$time1 =  $_POST['time'];
+$time =  date('h:i A', strtotime($time1));
+
+$persons =  $_POST['persons'];
+
+$customer_name =  $_POST['customer_name'];
+$email =  $_POST['email'];
+$phone_number =  $_POST['phone_number'];
+$message = $_POST['message'];
+$status = $_POST['status'];
+
+    $conn = mysqli_connect('localhost', 'marketf7_lokesh', '#Xka1ZJ$&QC[' );
+    mysqli_select_db($conn, 'marketf7_mailspot');
+
+    $sql = "UPDATE indianharvest_reservation SET date = '$date', time = '$time', persons= '$persons', customer_name='$customer_name', email = '$email', phone_number ='$phone_number' ,message='$message' , status='$status' WHERE id = '$id'";
+//print_r($sql);
+    if(mysqli_query($conn, $sql))
+        
+        echo "<script type='text/javascript'>
+    window.location.href= 'https://marketenomicsdigital.com/NS-Forms/indianharvest_view';
+    </script>";
+    else
+        var_dump(mysqli_error($conn));
+ 
+}
+?>
+      <?php
+  
+ if (isset($_POST['approved'])){
+
+
+
+
+ require_once 'phpmailer/PHPMailerAutoload.php';
+require_once 'phpmailer/class.phpmailer.php';
+require_once 'phpmailer/class.smtp.php';
+
+$email = $_POST["email"];
+$status = $_POST["status"];
+$name = $_POST["name"];
+$date = $_POST["date"];
+$time = $_POST["time"];
+
+
+$mail = new PHPMailer;
+//$mail->isSMTP();
+$mail->Host ='smtp.gmail.com';
+$mail->Port=465;
+$mail->SMTPAuth=true;
+$mail->SMTPSecure='ssl';
+
+$mail->Username='info@marketenomicsdigital.com';
+$mail->Password='Allthebest@123';
+
+$mail->setFrom('info@marketenomicsdigital.com');
+$mail->addAddress($email);
+//$mail->addReplyTo('nectarspot@gmail.com');
+// $mail->addCC('rakesh@nectarspot.com');
+// $mail->addBCC('nectarspot.ticket@gmail.com');
+
+
+$mail->isHTML(true);
+$mail->Subject='Re:Booking Confirm Mail';
+$mail->Body="<html>
+<head>
+    <title>Beyondshelving - Contact Us</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <meta name='format-detection' content='telephone=no'>
+    <meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no';>
+  
+    
+    <style >
+        body {
+            margin-left: auto;
+            margin-top: 10px;
+            margin-right: auto;
+            margin-bottom: 10px;
+            font-family: Open Sans, sans-serif;
+            background-color: #ffa500;
+            font-size: 18px !important;
+            max-width: 800px;
+        }
+
+        h1,h2,h3,h4,h5,h6 {margin-top: 0; margin-bottom: 0}
+              
+        th {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+        .data-details {
+    width: 100%;
+}
+
+
+
+.data-details tr:nth-child(even){background-color: #f2f2f2}
+        
+        @media screen and (max-width: 630px) {
+            .content {
+                max-width: inherit;
+            }
+            td {display: block; text-align: center;}
+            .data-details td {display: table-cell; text-align: left;}
+            span.title {display: inline-block !important; padding-top: 20px; max-width: inherit;}
+            .shippmethod td {width: 100%;}
+            .Paymentdetails td {display: inline;}
+            .table-data td {display: block; text-align: left}
+        }
+    </style>
+</head>
+
+<body>
+  
+    <style >
+        body {
+            margin-left: auto;
+            margin-top: 10px;
+            margin-right: auto;
+            margin-bottom: 10px;
+            font-family: Open Sans, sans-serif;
+            background-color: #ffa500;
+            font-size: 18px !important;
+            max-width: 800px;
+        }
+
+        h1,h2,h3,h4,h5,h6 {margin-top: 0; margin-bottom: 0}
+              
+        th {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+        .data-details {
+    width: 100%;
+}
+
+
+
+.data-details tr:nth-child(even){background-color: #f2f2f2}
+        
+        @media screen and (max-width: 630px) {
+            .content {
+                max-width: inherit;
+            }
+            td {display: block; text-align: center;}
+            .data-details td {display: table-cell; text-align: left;}
+            span.title {display: inline-block !important; padding-top: 20px; max-width: inherit;}
+            .shippmethod td {width: 100%;}
+            .Paymentdetails td {display: inline;}
+            .table-data td {display: block; text-align: left}
+        }
+    </style>
+</head>
+
+<body>
+    <table width='100%' align='center' border='0' cellpadding='0' cellspacing='0' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%;' class='background'>
+  <tr>
+    <td align='center' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;' bgcolor='#ffffff'>
+      <table border='0' cellpadding='0' cellspacing='0' align='center' width='600' style='border-collapse: collapse; border-spacing: 0; padding: 0; max-width: 600px;'' class='wrapper'>
+        <tr>
+          <td align='left' style='font-family: sans-serif; padding:20px; color:#999999; font-size: 12px;'>
+           
+          </td>
+          <td align='right' style='font-family: sans-serif; padding:20px;'>
+            <a target='_blank' style='text-decoration: none;' href='#'>
+             <img src='https://theindianharvest.com/images/logo1.png' border='0' style='padding-left:10px; vertical-align: bottom; padding-right: 168px;  width:213px; height:89px;'>
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align='center' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;'>
+      <table bgcolor='#1b48b2' border='0' cellpadding='0' cellspacing='0' align='center' width='600' style='border-collapse: collapse; border-spacing: 0; padding: 0; max-width: 600px;' class='wrapper'>
+        <tr>
+          <td align='center' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 40px; font-size: 28px; font-weight: bold; color: #ffffff; font-family: sans-serif;' class='header'>
+               Welcome to The IndianHarvest Restaurant
+          </td>
+        </tr>
+       </table>
+     </td>
+   </tr>
+  <tr>
+     <td align='center' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-top: 5px;' bgcolor='#FFFFFF'>
+       <table border='0' cellpadding='0' cellspacing='0' align='center' width='600' style='border-collapse: collapse; border-spacing: 0; padding: 0; max-width: 600px;' class='wrapper'>
+         <tr>
+           <td style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 20px 20px 20px 20px; font-family: sans-serif;'>
+               <h2 style='margin:0; padding:0;'>Dear $name,</h2>
+               <p>  Your Reservation of booking a table at {$time} on {$date} is confirmed. Please visit us on your booking time.</p>
+               
+           </td>
+           
+         </tr>
+       </table>
+     </td>
+     </tr>
+    
+ 
+  <tr>
+    <td align='left' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;' class='footer'>
+      <table bgcolor='#ffffff' border='0' cellpadding='0' cellspacing='0' align='center' width='600' style='border-collapse: collapse; border-spacing: 0; padding: 0; max-width: 600px;' class='wrapper'>
+        <tr>
+          <td align='left' style='font-family: sans-serif; padding:20px; font-size: 13px; font-family: sans-serif;'>
+            <p>hello@nectarspot.com </p>
+          </td>
+          <td align='right' style='font-family: sans-serif; padding:20px; font-size: 13px; font-family: sans-serif;'>
+            <p>All rights reserved </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+
+</html>";
+
+if(!$mail->send()){
+    echo "message could not be sent";
+}else{
+    echo "Message has been sent!";
+}
+
+
+
+
+
+
+}
+
+?>
+
+ 
+
+ <?php
+  
+ if (isset($_POST['rejected'])){
+
+
+
+
+  require_once 'phpmailer/PHPMailerAutoload.php';
+require_once 'phpmailer/class.phpmailer.php';
+require_once 'phpmailer/class.smtp.php';
+
+$email = $_POST["email"];
+$status = $_POST["status"];
+$name = $_POST["name"];
+$date = $_POST["date"];
+$time = $_POST["time"];
+
+
+
+$mail = new PHPMailer;
+//$mail->isSMTP();
+$mail->Host ='smtp.gmail.com';
+$mail->Port=465;
+$mail->SMTPAuth=true;
+$mail->SMTPSecure='ssl';
+
+$mail->Username='info@marketenomicsdigital.com';
+$mail->Password='Allthebest@123';
+
+$mail->setFrom('info@marketenomicsdigital.com');
+$mail->addAddress($email);
+//$mail->addReplyTo('nectarspot@gmail.com');
+// $mail->addCC('rakesh@nectarspot.com');
+// $mail->addBCC('nectarspot.ticket@gmail.com');
+
+
+$mail->isHTML(true);
+$mail->Subject='Re:Booking Rejected Mail';
+$mail->Body="<html>
+<head>
+    <title>Beyondshelving - Contact Us</title>
+    <meta http-equiv='Content-Type' content='text/html; charset=UTF-8' />
+    <meta name='format-detection' content='telephone=no'>
+    <meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no';>
+  
+    
+    <style >
+        body {
+            margin-left: auto;
+            margin-top: 10px;
+            margin-right: auto;
+            margin-bottom: 10px;
+            font-family: Open Sans, sans-serif;
+            background-color: #ffa500;
+            font-size: 18px !important;
+            max-width: 800px;
+        }
+
+        h1,h2,h3,h4,h5,h6 {margin-top: 0; margin-bottom: 0}
+              
+        th {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+        .data-details {
+    width: 100%;
+}
+
+
+
+.data-details tr:nth-child(even){background-color: #f2f2f2}
+        
+        @media screen and (max-width: 630px) {
+            .content {
+                max-width: inherit;
+            }
+            td {display: block; text-align: center;}
+            .data-details td {display: table-cell; text-align: left;}
+            span.title {display: inline-block !important; padding-top: 20px; max-width: inherit;}
+            .shippmethod td {width: 100%;}
+            .Paymentdetails td {display: inline;}
+            .table-data td {display: block; text-align: left}
+        }
+    </style>
+</head>
+
+<body>
+  
+    <style >
+        body {
+            margin-left: auto;
+            margin-top: 10px;
+            margin-right: auto;
+            margin-bottom: 10px;
+            font-family: Open Sans, sans-serif;
+            background-color: #ffa500;
+            font-size: 18px !important;
+            max-width: 800px;
+        }
+
+        h1,h2,h3,h4,h5,h6 {margin-top: 0; margin-bottom: 0}
+              
+        th {
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+        .data-details {
+    width: 100%;
+}
+
+
+
+.data-details tr:nth-child(even){background-color: #f2f2f2}
+        
+        @media screen and (max-width: 630px) {
+            .content {
+                max-width: inherit;
+            }
+            td {display: block; text-align: center;}
+            .data-details td {display: table-cell; text-align: left;}
+            span.title {display: inline-block !important; padding-top: 20px; max-width: inherit;}
+            .shippmethod td {width: 100%;}
+            .Paymentdetails td {display: inline;}
+            .table-data td {display: block; text-align: left}
+        }
+    </style>
+</head>
+
+<body>
+    <table width='100%' align='center' border='0' cellpadding='0' cellspacing='0' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; width: 100%;' class='background'>
+  <tr>
+    <td align='center' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;' bgcolor='#ffffff'>
+      <table border='0' cellpadding='0' cellspacing='0' align='center' width='600' style='border-collapse: collapse; border-spacing: 0; padding: 0; max-width: 600px;'' class='wrapper'>
+        <tr>
+          <td align='left' style='font-family: sans-serif; padding:20px; color:#999999; font-size: 12px;'>
+           
+          </td>
+          <td align='right' style='font-family: sans-serif; padding:20px;'>
+            <a target='_blank' style='text-decoration: none;' href='#'>
+             <img src='https://theindianharvest.com/images/logo1.png' border='0' style='padding-left:10px; vertical-align: bottom; padding-right: 168px; width:213px; height:89px;'>
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td align='center' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;'>
+      <table bgcolor='#1b48b2' border='0' cellpadding='0' cellspacing='0' align='center' width='600' style='border-collapse: collapse; border-spacing: 0; padding: 0; max-width: 600px;' class='wrapper'>
+        <tr>
+          <td align='center' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 40px; font-size: 28px; font-weight: bold; color: #ffffff; font-family: sans-serif;' class='header'>
+               Welcome to The IndianHarvest Restaurant
+          </td>
+        </tr>
+       </table>
+     </td>
+   </tr>
+  <tr>
+     <td align='center' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-top: 5px;' bgcolor='#FFFFFF'>
+       <table border='0' cellpadding='0' cellspacing='0' align='center' width='600' style='border-collapse: collapse; border-spacing: 0; padding: 0; max-width: 600px;' class='wrapper'>
+         <tr>
+           <td style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 20px 20px 20px 20px; font-family: sans-serif;'>
+             <h2 style='margin:0; padding:0;'>Dear $name,</h2>
+               <p>  We regret to inform you that we cannot be of service to you because we are already booked for the day.</p>
+               <p>Please reserve your table again with us <a href='https://theindianharvest.com/reservation-v1'>here</a> </p>
+             
+               
+           </td>
+           
+         </tr>
+       </table>
+     </td>
+     </tr>
+    
+ 
+  <tr>
+    <td align='left' valign='top' style='border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0;' class='footer'>
+      <table bgcolor='#ffffff' border='0' cellpadding='0' cellspacing='0' align='center' width='600' style='border-collapse: collapse; border-spacing: 0; padding: 0; max-width: 600px;' class='wrapper'>
+        <tr>
+          <td align='left' style='font-family: sans-serif; padding:20px; font-size: 13px; font-family: sans-serif;'>
+            <p>hello@nectarspot.com </p>
+          </td>
+          <td align='right' style='font-family: sans-serif; padding:20px; font-size: 13px; font-family: sans-serif;'>
+            <p>All rights reserved </p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+
+</html>";
+
+if(!$mail->send()){
+    echo "message could not be sent";
+}else{
+    echo "Message has been sent!";
+}
+
+
+
+}
+
+?>
+    
+   
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="assets/extra-libs/sparkline/sparkline.js"></script>
+    <!--Wave Effects -->
+    <script src="dist/js/waves.js"></script>
+    <!--Menu sidebar -->
+    <script src="dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="dist/js/custom.min.js"></script>
+
+    <script type="text/javascript">
+        
+$(document).ready(function() {
+    $('#example').DataTable( {
+
+
+        dom: 'Bfrtip',
+
+        buttons: [
+            'copy',
+             { 
+      extend: 'csv',
+      text: 'Export'
+   }, 
+             'excel',
+              'pdf' 
+        ],
+        initComplete: function () {
+            var btns = $('.dt-button');
+            btns.addClass('btn btn-success btn-sm');
+            btns.removeClass('dt-button');
+
+        }
+
+        
+    } );
+} );
+
+    </script>
+   
+    
+ <script>
+// $("#checkAl").click(function () {
+// $('input:checkbox').not(this).prop('checked', this.checked);
+// });
+
+ $('document').ready(function()
+{
+    $(".select-all").click(function ()
+    {
+        $('.chk-box').attr('checked', this.checked)
+    });
+        
+    $(".chk-box").click(function()
+    {
+        if($(".chk-box").length == $(".chk-box:checked").length)
+        {
+            $(".select-all").attr("checked", "checked");
+        }
+        else
+        {
+            $(".select-all").removeAttr("checked");
+        }
+    });
+});
+
+
+//  for select / deselect all
+
+
+//  page redirect on user click edit/delete
+function edit_records() 
+{
+	document.frm.action = "edit_mul.php";
+	document.frm.submit();		
+}
+function delete_records() 
+{
+	document.frm.action = "delete_mul.php";
+	document.frm.submit();
+}
+    </script>
+    
+    
+</body>
+
+</html>
